@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Grathana{% endblock %}
+
+{% block body %}
+<body>
+    <p> 
+    </p>
+    	
+    <div id="file-drop">
+    <form action="{{ url_for('site.do_ocr') }}" class="dropzone" id="my-great-dropzone">
+    </form>
+</div>
+    <script>
+    Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2048, // MB
+        accept: function(file, done) {
+        if (file.name == "justinbieber.jpg") {
+            done("Naha, you don't.");
+        }
+        else { 
+            done(); 
+            var anchor = document.createElement('a');
+            anchor.text = "Download Text File"
+            anchor.href = 'http://localhost:5000/ocr?file='+file.name;
+            anchor.download = true;
+
+            /*var evt = document.createEvent('MouseEvents');
+            evt.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+            anchor.dispatchEvent(evt);
+*/          
+console.log(anchor);
+            document.getElementById('file-drop').appendChild(anchor);
+        }
+        }
+    };
+    </script>
+ </body>
+
+{% endblock %}

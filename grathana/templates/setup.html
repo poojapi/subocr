@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Grathana{% endblock %}
+
+{% block body %}
+<body>
+    <h1>Grathana OCR</h1>
+
+    <p> Is this your first time? <br/>
+    	<a href={{url_for('bijavapa')}}>SETUP</a>
+    </p>
+
+    <p> Already setup service account? <br/>
+    	<a href={{url_for('grathana')}}>OCR</a>
+    </p>
+</body>
+{% endblock %}
